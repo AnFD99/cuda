@@ -9,26 +9,28 @@ burger.addEventListener('click', (event) => {
 })
 
 // Filter
-const buttons = document.querySelectorAll('.portfolio-btn')
-const cards = document.querySelectorAll('.portfolio-item')
-
-function filter(category, items) {
-   items.forEach((item) => {
-      const isItemFiltered = !item.classList.contains(category)
-      const isShowAll = category === 'all'
-      if (isItemFiltered && !isShowAll) {
-         item.classList.add('hide')
-      } else {
-         item.classList.remove('hide')
-      }
-   })
-}
+const buttons = document.querySelectorAll('[data-filter]')
+const allCards = document.querySelectorAll('.portfolio-item')
 
 buttons.forEach((button) => {
-   button.addEventListener('click', (event) => {
-      event.preventDefault()
-      const currentCategory = button.dataset.filter
-      filter(currentCategory, cards)
+   button.addEventListener('click', function () {
+      if (button.classList.contains('active')) {
+         button.classList.remove('active')
+      }
+
+      allCards.forEach((card) => {
+         if (button.dataset.filter == 'all') {
+            card.classList.remove('hide')
+         } else {
+            card.classList.add('hide')
+         }
+      })
+
+      document
+         .querySelectorAll('.' + this.dataset.filter)
+         .forEach((currentCard) => {
+            currentCard.classList.remove('hide')
+         })
    })
 })
 
@@ -56,3 +58,4 @@ document.addEventListener('DOMContentLoaded', () => {
       ajaxSend(formData)
    }
 })
+
