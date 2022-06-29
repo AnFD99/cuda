@@ -435,10 +435,67 @@ p {
 }
 
 .skills-item {
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   position: relative;
    width: 25%;
    max-width: 400px;
-   padding: 25px 40px;
+   padding: 25px;
    text-align: center;
+}
+
+.skill-percent {
+   position: relative;
+   max-width: 200px;
+   height: auto;
+   margin-bottom: 30px;
+}
+
+.skill-percent svg {
+   position: relative;
+   width: 170px;
+   height: 170px;
+   transform: rotate(270deg);
+}
+
+.skill-percent svg circle {
+   width: 150px;
+   height: 150px;
+   fill: transparent;
+   stroke-width: 12;
+   stroke: #e7f1f8;
+   transform: translate(9px, 9px);
+}
+
+.skill-percent svg circle:nth-child(2) {
+   stroke: var(--clr);
+   stroke-dasharray: 440;
+   stroke-dashoffset: calc(440 - (440 * var(--num)) / 100);
+}
+
+.skill-number {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   vertical-align: bottom;
+
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+
+   font-family: inherit;
+   font-size: 35px;
+   color: #3c4761;
+}
+
+.skill-number h2 {
+   font-weight: 300;
+}
+
+.skill-number h2 span {
+   font-size: 30px;
 }
 
 .skills-img {
